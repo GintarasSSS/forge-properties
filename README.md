@@ -39,7 +39,7 @@ http://127.0.0.1/
 ![img.png](img.png)
 ## Testing
 ```
- docker-compose exec -it app bash
+docker-compose exec -it app bash
 ```
 ```
 XDEBUG_MODE=coverage php artisan test --coverage
