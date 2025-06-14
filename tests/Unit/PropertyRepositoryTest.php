@@ -19,7 +19,7 @@ class PropertyRepositoryTest extends TestCase
         'date_to' => '2025-07-10'
     ];
 
-    public function testReturnsAllPropertiesWhenNoFilters()
+    public function testReturnsAllPropertiesWhenNoFilters(): void
     {
         Property::factory()->count(3)->create();
 
@@ -29,7 +29,7 @@ class PropertyRepositoryTest extends TestCase
         $this->assertCount(3, $results);
     }
 
-    public function testFiltersByLocation()
+    public function testFiltersByLocation(): void
     {
         $locationName = 'Beach Side';
 
@@ -47,7 +47,7 @@ class PropertyRepositoryTest extends TestCase
         $this->assertEquals($locationName, $results->first()->location->name);
     }
 
-    public function testFiltersByNearBeach()
+    public function testFiltersByNearBeach(): void
     {
         $beachLocation = Location::factory()->create(['near_beach' => true]);
         $notBeachLocation = Location::factory()->create(['near_beach' => false]);
@@ -62,7 +62,7 @@ class PropertyRepositoryTest extends TestCase
         $this->assertFalse($results->contains($prop2));
     }
 
-    public function testFiltersByAcceptsPets()
+    public function testFiltersByAcceptsPets(): void
     {
         $prop1 = Property::factory()->create(['accepts_pets' => true]);
         $prop2 = Property::factory()->create(['accepts_pets' => false]);
@@ -74,7 +74,7 @@ class PropertyRepositoryTest extends TestCase
         $this->assertFalse($results->contains($prop2));
     }
 
-    public function testFiltersBySleepsAndBeds()
+    public function testFiltersBySleepsAndBeds(): void
     {
         $prop1 = Property::factory()->create(['sleeps' => 4, 'beds' => 2]);
         $prop2 = Property::factory()->create(['sleeps' => 2, 'beds' => 1]);
