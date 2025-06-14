@@ -45,7 +45,7 @@ http://127.0.0.1/
 XDEBUG_MODE=coverage php artisan test --coverage
 ```
 ![img_1.png](img_1.png)
-## Bookings Testing Scenarios Table
+## Bookings Testing Scenarios
 | Booking From | Booking To | `available_from` | `available_to` | Expected? | 
 |--------------|------------|------------------|----------------|-----------|
 | 2025-07-01   | 2025-07-10 | 2025-07-05       | *null*         | ❌ No     |
