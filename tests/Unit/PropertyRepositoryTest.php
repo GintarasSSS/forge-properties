@@ -14,6 +14,11 @@ class PropertyRepositoryTest extends TestCase
 {
     use RefreshDatabase;
 
+    private const BOOKING_DATES = [
+        'date_from' => '2025-07-01',
+        'date_to' => '2025-07-10'
+    ];
+
     public function testReturnsAllPropertiesWhenNoFilters()
     {
         Property::factory()->count(3)->create();
@@ -88,10 +93,7 @@ class PropertyRepositoryTest extends TestCase
         $property = Property::factory()->create();
         $booked = Property::factory()->create();
 
-        Booking::factory()->for($booked)->create([
-            'date_from' => '2025-07-01',
-            'date_to' => '2025-07-10',
-        ]);
+        Booking::factory()->for($booked)->create(self::BOOKING_DATES);
 
         $repo = new PropertyRepository();
         $results = $repo->search($filters);
@@ -145,10 +147,7 @@ class PropertyRepositoryTest extends TestCase
     {
         $booked = Property::factory()->create();
 
-        Booking::factory()->for($booked)->create([
-            'date_from' => '2025-07-01',
-            'date_to' => '2025-07-10',
-        ]);
+        Booking::factory()->for($booked)->create(self::BOOKING_DATES);
 
         $repo = new PropertyRepository();
 
